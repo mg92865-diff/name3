@@ -81,7 +81,7 @@ addBtn.addEventListener("click", function () {
 
     people.push(newPerson);
 
-    localStorage.setItem("people", JSON.stringify(people));
+    //localStorage.setItem("people", JSON.stringify(people));  //needs to be commented out
 
     renderList();
 
@@ -96,10 +96,10 @@ saveBtn.addEventListener("click", function () {
     person.name = editName.value;
     person.age = editAge.value;
 
-    localStorage.setItem("people", JSON.stringify(people));
+    //localStorage.setItem("people", JSON.stringify(people));   //needs to be commented out
 
-    renderList();
-    showMaster();
+    renderList();   //needs to comment out
+    showMaster();   //needs to comment out
 });
 
 // back button
@@ -108,7 +108,25 @@ backBtn.addEventListener("click", function () {
 });
 
 // initial load
-renderList();
+//renderList();
+//showMaster();
+
+async function loadPeople() {
+    const { data, error } = await supabase
+        .from("people")
+        .select("*")
+        .order("id", { ascending: true });
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    people = data;
+    renderList();
+}
+
+loadPeople();
 showMaster();
 
 deleteOneBtn.addEventListener("click", function () {
