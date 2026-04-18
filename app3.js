@@ -1,4 +1,4 @@
-
+/*      */
 
 const nameInput = document.getElementById("nameInput");
 const ageInput = document.getElementById("ageInput");
