@@ -1,5 +1,12 @@
 /*      */
 
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const SUPABASE_URL = "https://ivalnnkfjyfmvjgrityn.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_ATkSM3Rr6Vi5LiSTyny2pw_onHk0ovF";
+ 
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 const nameInput = document.getElementById("nameInput");
 const ageInput = document.getElementById("ageInput");
 const addBtn = document.getElementById("addBtn");
@@ -17,7 +24,8 @@ const saveBtn = document.getElementById("saveBtn");
 const backBtn = document.getElementById("backBtn");
 
 // data
-let people = JSON.parse(localStorage.getItem("people")) || [];
+//let people = JSON.parse(localStorage.getItem("people")) || [];  // this needs to be commented out
+let people = [];  // this code needs to be added
 let currentId = null;
 
 // render master list
